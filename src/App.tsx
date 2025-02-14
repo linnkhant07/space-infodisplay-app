@@ -7,7 +7,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
 
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const handleToggleModal = () => {
     setShowModal(!showModal);
@@ -23,10 +23,10 @@ function App() {
       /* load it only once every day*/
       const today = new Date().toDateString();
       const localKey = `NASA-${today}`;
-
+      const item = localStorage.getItem(localKey);
       /*if localkey already exists - just get the data from it*/
-      if (localStorage.getItem(localKey)) {
-        const apiData = JSON.parse(localStorage.getItem(localKey));
+      if (item) {
+        const apiData = item ? JSON.parse(item) : null; // Safely handle null
         setData(apiData);
         console.log("Fetched from local storage,", apiData);
         return;

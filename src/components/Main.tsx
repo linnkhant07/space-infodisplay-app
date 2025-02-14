@@ -1,7 +1,10 @@
-import React from "react";
+type DataType = {
+  title: string;
+  [key: string]: any; // Add this if the object has other properties
+};
 
 interface MainProps {
-  data: object | null;
+  data: DataType | null;
 }
 
 export default function Main({ data }: MainProps) {
